@@ -1,17 +1,7 @@
 import pygame
 import sys
 
-def main():
-    pygame.init()
-    pygame.display.set_caption("Test Game")
-     
-    screen = pygame.display.set_mode((800, 600))
-
-    x = 350
-    y = 300
-
-    background = pygame.image.load("assets/images/grass.png").convert()
-     
+def game_loop(screen, background, x: int, y: int):
     while True:
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
@@ -32,7 +22,18 @@ def main():
         if pressed_key[pygame.K_s]:
             y += 0.5
         
-        pygame.display.update()
+        pygame.display.update() 
+
+def main():
+    pygame.init()
+    pygame.display.set_caption("Test Game")
+    
+    game_loop(
+        pygame.display.set_mode((800, 600)), 
+        pygame.image.load("assets/images/grass.png").convert(),
+        350,
+        300
+    )
 
 if __name__=="__main__":
     main()

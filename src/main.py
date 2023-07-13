@@ -6,6 +6,7 @@ class Player:
         self.x = x
         self.y = y
         self.color = color
+        self.speed = 0.5
 
     def draw(self, screen):
         pygame.draw.rect(
@@ -15,16 +16,16 @@ class Player:
     )
     
     def up(self):
-        self.y -= 0.5
+        self.y -= self.speed
     
     def down(self):
-        self.y += 0.5
+        self.y += self.speed
     
     def left(self):
-        self.x -= 0.5
+        self.x -= self.speed
 
     def right(self):
-        self.x += 0.5
+        self.x += self.speed
 
 def exit_on_close():
     for event in pygame.event.get():

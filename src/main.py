@@ -15,16 +15,16 @@ class Player:
             pygame.Rect(self.x, self.y, 50, 100)
         )
     
-    def up(self):
+    def move_up(self):
         self.y -= self.speed
     
-    def down(self):
+    def move_down(self):
         self.y += self.speed
     
-    def left(self):
+    def move_left(self):
         self.x -= self.speed
 
-    def right(self):
+    def move_right(self):
         self.x += self.speed
 
 def exit_on_close():
@@ -34,13 +34,13 @@ def exit_on_close():
 
 def key_input(pressed_key, player_one):
     if pressed_key[pygame.K_w]:
-        player_one.up()
+        player_one.move_up()
     if pressed_key[pygame.K_s]:
-        player_one.down()
+        player_one.move_down()
     if pressed_key[pygame.K_a]:
-        player_one.left()
+        player_one.move_left()
     if pressed_key[pygame.K_d]:
-        player_one.right()
+        player_one.move_right()
 
 def game_loop(screen, background, player_one: Player):
     while True:
@@ -53,7 +53,7 @@ def game_loop(screen, background, player_one: Player):
 
         key_input(pygame.key.get_pressed(), player_one)
         
-        pygame.display.update() 
+        pygame.display.move_update() 
 
 def main():
     pygame.init()

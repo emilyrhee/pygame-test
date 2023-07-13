@@ -11,24 +11,24 @@ def exit_on_close():
         if event.type == pygame.QUIT:
             sys.exit()
 
-def game_loop(screen, background, x: int, y: int):
+def game_loop(screen, background, player_one: Player):
     while True:
         exit_on_close()
-
+        
         screen.fill((0, 0, 0))
         screen.blit(background, (0, 0))
 
-        pygame.draw.rect(screen, "blue", pygame.Rect(x, y, 50, 100))
+        pygame.draw.rect(screen, "blue", pygame.Rect(player_one.x, player_one.y, 50, 100))
 
         pressed_key = pygame.key.get_pressed()
         if pressed_key[pygame.K_w]:
-            y -= 0.5
+            player_one.y -= 0.5
         if pressed_key[pygame.K_d]:
-            x += 0.5
+            player_one.x += 0.5
         if pressed_key[pygame.K_a]:
-            x -= 0.5
+            player_one.x -= 0.5
         if pressed_key[pygame.K_s]:
-            y += 0.5
+            player_one.y += 0.5
         
         pygame.display.update() 
 
@@ -36,13 +36,10 @@ def main():
     pygame.init()
     pygame.display.set_caption("Test Game")
 
-    player_one: Player = Player(350, 300)
-    
     game_loop(
         pygame.display.set_mode((800, 600)), 
         pygame.image.load("assets/images/grass.png").convert(),
-        350,
-        300
+        Player(350, 300)
     )
 
 if __name__=="__main__":

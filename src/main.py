@@ -2,9 +2,10 @@ import pygame
 import sys
 
 class Player:
-    def __init__(self, x: float, y: float):
+    def __init__(self, x: float, y: float, color: str):
         self.x = x
         self.y = y
+        self.color = color
 
 def exit_on_close():
     for event in pygame.event.get():
@@ -18,7 +19,7 @@ def game_loop(screen, background, player_one: Player):
         screen.fill((0, 0, 0))
         screen.blit(background, (0, 0))
 
-        pygame.draw.rect(screen, "blue", pygame.Rect(player_one.x, player_one.y, 50, 100))
+        pygame.draw.rect(screen, player_one.color, pygame.Rect(player_one.x, player_one.y, 50, 100))
 
         pressed_key = pygame.key.get_pressed()
         if pressed_key[pygame.K_w]:
@@ -39,7 +40,7 @@ def main():
     game_loop(
         pygame.display.set_mode((800, 600)), 
         pygame.image.load("assets/images/grass.png").convert(),
-        Player(350, 300)
+        Player(350, 300, "blue")
     )
 
 if __name__=="__main__":

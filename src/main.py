@@ -18,7 +18,7 @@ def main():
         
         screen.fill("white")
 
-        pygame.draw.rect(screen, "blue", pygame.Rect(20, y, 50, 100))
+        pygame.draw.rect(screen, "blue", pygame.Rect(x, y, 50, 100))
 
         pressed_key = pygame.key.get_pressed()
         if pressed_key[pygame.K_w]:

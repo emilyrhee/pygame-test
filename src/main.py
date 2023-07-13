@@ -10,7 +10,7 @@ def game_loop(screen, background, x: int, y: int):
     while True:
         exit_on_close()
 
-        screen.fill((0, 0, 0, 0))
+        screen.fill((0, 0, 0))
         screen.blit(background, (0, 0))
 
         pygame.draw.rect(screen, "blue", pygame.Rect(x, y, 50, 100))

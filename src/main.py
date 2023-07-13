@@ -21,7 +21,12 @@ def main():
         pressed_key = pygame.key.get_pressed()
         if pressed_key[pygame.K_w]:
             y -= 0.5
-            print("hi")
+        if pressed_key[pygame.K_d]:
+            x += 0.5
+        if pressed_key[pygame.K_a]:
+            x -= 0.5
+        if pressed_key[pygame.K_s]:
+            y += 0.5
         
         pygame.display.update()
 

@@ -19,6 +19,16 @@ def exit_on_close():
         if event.type == pygame.QUIT:
             sys.exit()
 
+def key_input(pressed_key, player_one):
+    if pressed_key[pygame.K_w]:
+        player_one.y -= 0.5
+    if pressed_key[pygame.K_d]:
+        player_one.x += 0.5
+    if pressed_key[pygame.K_a]:
+        player_one.x -= 0.5
+    if pressed_key[pygame.K_s]:
+        player_one.y += 0.5
+
 def game_loop(screen, background, player_one: Player):
     while True:
         exit_on_close()
@@ -28,15 +38,7 @@ def game_loop(screen, background, player_one: Player):
 
         player_one.draw(screen)
 
-        pressed_key = pygame.key.get_pressed()
-        if pressed_key[pygame.K_w]:
-            player_one.y -= 0.5
-        if pressed_key[pygame.K_d]:
-            player_one.x += 0.5
-        if pressed_key[pygame.K_a]:
-            player_one.x -= 0.5
-        if pressed_key[pygame.K_s]:
-            player_one.y += 0.5
+        key_input(pygame.key.get_pressed(), player_one)
         
         pygame.display.update() 
 

@@ -1,6 +1,11 @@
 import pygame
 import sys
 
+class Player:
+    def __init__(self, x: float, y: float):
+        self.x = x
+        self.y = y
+
 def exit_on_close():
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
@@ -30,6 +35,8 @@ def game_loop(screen, background, x: int, y: int):
 def main():
     pygame.init()
     pygame.display.set_caption("Test Game")
+
+    player_one: Player = Player(350, 300)
     
     game_loop(
         pygame.display.set_mode((800, 600)), 

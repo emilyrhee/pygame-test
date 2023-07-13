@@ -7,6 +7,13 @@ class Player:
         self.y = y
         self.color = color
 
+    def draw(self, screen):
+        pygame.draw.rect(
+            screen,
+            self.color,
+            pygame.Rect(self.x, self.y, 50, 100)
+    )
+
 def exit_on_close():
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
@@ -19,7 +26,7 @@ def game_loop(screen, background, player_one: Player):
         screen.fill((0, 0, 0))
         screen.blit(background, (0, 0))
 
-        pygame.draw.rect(screen, player_one.color, pygame.Rect(player_one.x, player_one.y, 50, 100))
+        player_one.draw(screen)
 
         pressed_key = pygame.key.get_pressed()
         if pressed_key[pygame.K_w]:

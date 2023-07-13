@@ -13,6 +13,18 @@ class Player:
             self.color,
             pygame.Rect(self.x, self.y, 50, 100)
     )
+    
+    def up(self):
+        self.y -= 0.5
+    
+    def down(self):
+        self.y += 0.5
+    
+    def left(self):
+        self.x -= 0.5
+
+    def right(self):
+        self.x += 0.5
 
 def exit_on_close():
     for event in pygame.event.get():
@@ -21,13 +33,13 @@ def exit_on_close():
 
 def key_input(pressed_key, player_one):
     if pressed_key[pygame.K_w]:
-        player_one.y -= 0.5
-    if pressed_key[pygame.K_d]:
-        player_one.x += 0.5
-    if pressed_key[pygame.K_a]:
-        player_one.x -= 0.5
+        player_one.up()
     if pressed_key[pygame.K_s]:
-        player_one.y += 0.5
+        player_one.down()
+    if pressed_key[pygame.K_a]:
+        player_one.left()
+    if pressed_key[pygame.K_d]:
+        player_one.right()
 
 def game_loop(screen, background, player_one: Player):
     while True:

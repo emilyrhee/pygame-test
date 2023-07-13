@@ -13,7 +13,7 @@ class Player:
             screen,
             self.color,
             pygame.Rect(self.x, self.y, 50, 100)
-    )
+        )
     
     def up(self):
         self.y -= self.speed

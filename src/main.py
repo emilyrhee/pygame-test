@@ -35,10 +35,13 @@ def exit_on_close():
 def key_input(pressed_key, player_one: Player):
     if pressed_key[pygame.K_w]:
         player_one.move_up()
+
     if pressed_key[pygame.K_s]:
         player_one.move_down()
+
     if pressed_key[pygame.K_a]:
         player_one.move_left()
+        
     if pressed_key[pygame.K_d]:
         player_one.move_right()
 

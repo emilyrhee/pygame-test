@@ -7,7 +7,9 @@ def main():
      
     screen = pygame.display.set_mode((800, 600))
 
-    y = 20
+    x = 350
+    y = 300
+
      
     while True:
         for event in pygame.event.get():

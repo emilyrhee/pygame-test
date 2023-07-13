@@ -10,13 +10,15 @@ def main():
     x = 350
     y = 300
 
+    background = pygame.image.load("assets/images/grass.png").convert()
      
     while True:
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 sys.exit()
         
-        screen.fill("white")
+        screen.fill((0, 0, 0, 0))
+        screen.blit(background, (0, 0))
 
         pygame.draw.rect(screen, "blue", pygame.Rect(x, y, 50, 100))
 

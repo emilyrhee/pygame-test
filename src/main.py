@@ -32,7 +32,7 @@ def exit_on_close():
         if event.type == pygame.QUIT:
             sys.exit()
 
-def key_input(pressed_key, player_one):
+def key_input(pressed_key, player_one: Player):
     if pressed_key[pygame.K_w]:
         player_one.move_up()
     if pressed_key[pygame.K_s]:

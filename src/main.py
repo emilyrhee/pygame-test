@@ -41,11 +41,15 @@ def key_input(pressed_key, player_one: Player):
 
     if pressed_key[pygame.K_a]:
         player_one.move_left()
-        
+
     if pressed_key[pygame.K_d]:
         player_one.move_right()
 
-def game_loop(screen, background, player_one: Player):
+def game_loop(
+    screen: pygame.Surface, 
+    background: pygame.Surface, 
+    player_one: Player
+):
     while True:
         exit_on_close()
         
@@ -56,7 +60,7 @@ def game_loop(screen, background, player_one: Player):
 
         key_input(pygame.key.get_pressed(), player_one)
         
-        pygame.display.move_update() 
+        pygame.display.update()
 
 def main():
     pygame.init()

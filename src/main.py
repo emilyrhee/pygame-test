@@ -35,7 +35,10 @@ class Background:
 
     def draw(self, screen: pygame.Surface):
         screen.fill((0, 0, 0))
-        screen.blit(pygame.image.load(self.img_path).convert(), (self.x, self.y))  # background coordinates must be defined inside game_loop
+        screen.blit(
+            pygame.image.load(self.img_path).convert(),
+            (self.x, self.y)
+        )
 
 def exit_on_close():
     for event in pygame.event.get():

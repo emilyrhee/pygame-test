@@ -27,12 +27,22 @@ class Player:
     def move_right(self):
         self.x += self.speed
 
+class Background:
+    def __init__(self, x: float, y: float, img_path: str):
+        self.x = x
+        self.y = y
+        self.img_path = img_path
+
+    def draw(self, screen: pygame.Surface):
+        screen.fill((0, 0, 0))
+        screen.blit(pygame.image.load(self.img_path).convert(), (self.x, self.y))  # background coordinates must be defined inside game_loop
+
 def exit_on_close():
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             sys.exit()
 
-def key_input(pressed_key, player_one: Player):
+def key_input(pressed_key: pygame.key.ScancodeWrapper, player_one: Player):
     if pressed_key[pygame.K_w]:
         player_one.move_up()
 
@@ -47,14 +57,13 @@ def key_input(pressed_key, player_one: Player):
 
 def game_loop(
     screen: pygame.Surface, 
-    background: pygame.Surface, 
+    background: Background, 
     player_one: Player
 ):
     while True:
         exit_on_close()
         
-        screen.fill((0, 0, 0))
-        screen.blit(background, (0, 0))
+        background.draw(screen)
 
         player_one.draw(screen)
 
@@ -68,7 +77,7 @@ def main():
 
     game_loop(
         pygame.display.set_mode((800, 600)), 
-        pygame.image.load("assets/images/grass.png").convert(),
+        Background(0, 0, "assets/images/grass.png"),
         Player(350, 300, "blue")
     )
 

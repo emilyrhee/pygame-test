@@ -6,7 +6,7 @@ class Player:
         self.x = x
         self.y = y
         self.color = color
-        self.speed = 0.5
+        self.speed = 2
 
     def draw(self, screen):
         pygame.draw.rect(

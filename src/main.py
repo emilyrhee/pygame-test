@@ -83,10 +83,13 @@ def main():
     display_width: int = 800
     display_height: int = 600
 
+    background = Image(0, 0, "assets/images/ground.jpg")
+    player_one = Player(display_width / 2, display_height / 2)
+
     game_loop(
         pygame.display.set_mode((display_width, display_height)), 
-        Image(0, 0, "assets/images/ground.jpg"),
-        Player(display_width/2, display_height/2)
+        background,
+        player_one
     )
 
 if __name__=="__main__":

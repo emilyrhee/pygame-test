@@ -5,6 +5,8 @@ class Player:
     def __init__(self, x: float, y: float, color: str):
         self.x = x
         self.y = y
+        self.width = 50
+        self.height = 100
         self.color = color
         self.speed = 2
 
@@ -12,7 +14,7 @@ class Player:
         pygame.draw.rect(
             screen,
             self.color,
-            pygame.Rect(self.x, self.y, 50, 100)
+            pygame.Rect(self.x, self.y, self.width, self.height)
         )
     
     def move_up(self):

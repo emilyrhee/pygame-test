@@ -74,10 +74,13 @@ def main():
     pygame.init()
     pygame.display.set_caption("Test Game")
 
+    display_width: int = 800
+    display_height: int = 600
+
     game_loop(
-        pygame.display.set_mode((800, 600)), 
+        pygame.display.set_mode((display_width, display_height)), 
         Image(0, 0, "assets/images/ground.jpg"),
-        Player(350, 300, "blue")
+        Player(display_width/2, display_height/2, "blue")
     )
 
 if __name__=="__main__":

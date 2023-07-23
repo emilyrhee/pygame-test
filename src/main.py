@@ -14,9 +14,9 @@ class Player:
             screen,
             "blue",
             pygame.Rect(
-                self.x, 
-                self.y, 
-                self.width, 
+                self.x - self.width / 2,
+                self.y - self.height / 2,
+                self.width,
                 self.height
             )
         )

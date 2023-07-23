@@ -2,18 +2,17 @@ import pygame
 import sys
 
 class Player:
-    def __init__(self, x: float, y: float, color: str):
+    def __init__(self, x: float, y: float):
         self.x = x
         self.y = y
         self.width = 50
         self.height = 100
-        self.color = color
         self.speed = 2
 
     def draw(self, screen):
         pygame.draw.rect(
             screen,
-            self.color,
+            "blue",
             pygame.Rect(self.x, self.y, self.width, self.height)
         )
     
@@ -82,7 +81,7 @@ def main():
     game_loop(
         pygame.display.set_mode((display_width, display_height)), 
         Image(0, 0, "assets/images/ground.jpg"),
-        Player(display_width/2, display_height/2, "blue")
+        Player(display_width/2, display_height/2)
     )
 
 if __name__=="__main__":

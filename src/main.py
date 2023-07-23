@@ -80,7 +80,7 @@ def main():
 
     game_loop(
         pygame.display.set_mode((800, 600)), 
-        Background(0, 0, "assets/images/grass.png"),
+        Background(0, 0, "assets/images/ground.jpg"),
         Player(350, 300, "blue")
     )
 

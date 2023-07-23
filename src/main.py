@@ -27,7 +27,7 @@ class Player:
     def move_right(self):
         self.x += self.speed
 
-class Background:
+class Image:
     def __init__(self, x: float, y: float, img_path: str):
         self.x = x
         self.y = y
@@ -60,7 +60,7 @@ def key_input(pressed_key: pygame.key.ScancodeWrapper, player_one: Player):
 
 def game_loop(
     screen: pygame.Surface, 
-    background: Background, 
+    background: Image, 
     player_one: Player
 ):
     while True:
@@ -80,7 +80,7 @@ def main():
 
     game_loop(
         pygame.display.set_mode((800, 600)), 
-        Background(0, 0, "assets/images/ground.jpg"),
+        Image(0, 0, "assets/images/ground.jpg"),
         Player(350, 300, "blue")
     )
 

@@ -65,13 +65,9 @@ def game_loop(
 ):
     while True:
         exit_on_close()
-        
         background.draw(screen)
-
         player_one.draw(screen)
-
         key_input(pygame.key.get_pressed(), player_one)
-        
         pygame.display.update()
 
 def main():

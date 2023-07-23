@@ -1,10 +1,24 @@
 import pygame
 import sys
 
-class Player:
-    def __init__(self, x: float, y: float):
+class Image:
+    def __init__(self, x: float, y: float, img_path: str):
         self.x = x
         self.y = y
+        self.img_path = img_path
+
+    def draw(self, screen: pygame.Surface):
+        screen.fill((0, 0, 0))
+        screen.blit(
+            pygame.image.load(self.img_path).convert(),
+            (self.x, self.y)
+        )
+
+class Player:
+    def __init__(self, x: float, y: float, background: Image):
+        self.x = x
+        self.y = y
+        self.background = background
         self.width = 50
         self.height = 100
         self.speed = 2
@@ -32,19 +46,6 @@ class Player:
 
     def move_right(self):
         self.x += self.speed
-
-class Image:
-    def __init__(self, x: float, y: float, img_path: str):
-        self.x = x
-        self.y = y
-        self.img_path = img_path
-
-    def draw(self, screen: pygame.Surface):
-        screen.fill((0, 0, 0))
-        screen.blit(
-            pygame.image.load(self.img_path).convert(),
-            (self.x, self.y)
-        )
 
 def exit_on_close():
     for event in pygame.event.get():
@@ -84,7 +85,7 @@ def main():
     display_height: int = 600
 
     background = Image(0, 0, "assets/images/ground.jpg")
-    player_one = Player(display_width / 2, display_height / 2)
+    player_one = Player(display_width / 2, display_height / 2, background)
 
     game_loop(
         pygame.display.set_mode((display_width, display_height)), 

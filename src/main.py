@@ -13,7 +13,12 @@ class Player:
         pygame.draw.rect(
             screen,
             "blue",
-            pygame.Rect(self.x, self.y, self.width, self.height)
+            pygame.Rect(
+                self.x, 
+                self.y, 
+                self.width, 
+                self.height
+            )
         )
     
     def move_up(self):

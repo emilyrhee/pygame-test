@@ -22,16 +22,16 @@ class Player:
         )
     
     def move_up(self):
-        self.background.y += self.speed
+        self.y -= self.speed
     
     def move_down(self):
-        self.background.y -= self.speed
+        self.y += self.speed
     
     def move_left(self):
-        self.background.x += self.speed
+        self.x -= self.speed
 
     def move_right(self):
-        self.background.x -= self.speed
+        self.x += self.speed
 
 class Image:
     def __init__(self, x: float, y: float, img_path: str):

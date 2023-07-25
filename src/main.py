@@ -36,16 +36,16 @@ class Player:
         )
     
     def move_up(self):
-        self.y -= self.speed
+        self.background.y += self.speed
     
     def move_down(self):
-        self.y += self.speed
+        self.background.y -= self.speed
     
     def move_left(self):
-        self.x -= self.speed
+        self.background.x += self.speed
 
     def move_right(self):
-        self.x += self.speed
+        self.background.x -= self.speed
 
 def exit_on_close():
     for event in pygame.event.get():

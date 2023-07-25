@@ -76,6 +76,8 @@ def game_loop(
         key_input(pygame.key.get_pressed(), player_one)
         pygame.display.update()
 
+# Refer to this:
+# https://stackoverflow.com/a/67534644
 def main():
     pygame.init()
     pygame.display.set_caption("Test Game")

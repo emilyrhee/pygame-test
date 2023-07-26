@@ -48,18 +48,18 @@ def exit_on_close():
         if event.type == pygame.QUIT:
             sys.exit()
 
-def key_input(pressed_key: pygame.key.ScancodeWrapper, player_one: Player):
+def key_input(pressed_key: pygame.key.ScancodeWrapper, player: Player):
     if pressed_key[pygame.K_w]:
-        player_one.move_up()
+        player.move_up()
 
     if pressed_key[pygame.K_s]:
-        player_one.move_down()
+        player.move_down()
 
     if pressed_key[pygame.K_a]:
-        player_one.move_left()
+        player.move_left()
 
     if pressed_key[pygame.K_d]:
-        player_one.move_right()
+        player.move_right()
 
 def game_loop(
     screen: pygame.Surface, 

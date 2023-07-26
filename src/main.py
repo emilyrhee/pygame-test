@@ -88,13 +88,11 @@ def main():
     pygame.display.set_caption("Test Game")
 
     display = pygame.math.Vector2((800,600))
-    background = Image(0, 0, "assets/images/ground.jpg")
-    player_one = Player(display.x / 2, display.y / 2)
 
     game_loop(
         pygame.display.set_mode((display.x, display.y)), 
-        background,
-        player_one,
+        Image(0, 0, "assets/images/ground.jpg"),
+        Player(display.x / 2, display.y / 2),
         pygame.math.Vector2((0, 0)),
         display
     )

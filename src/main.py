@@ -70,14 +70,15 @@ def game_loop(
 ):
     while True:
         exit_on_close()
-        
+
+        key_input(pygame.key.get_pressed(), player_one)
+
         camera.x = player_one.pos.x - display.x / 2
         camera.y = player_one.pos.y - display.y / 2
 
         background.draw(screen)
         player_one.draw(screen)
 
-        key_input(pygame.key.get_pressed(), player_one)
         pygame.display.update()
 
 # Refer to this:

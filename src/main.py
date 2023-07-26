@@ -82,14 +82,13 @@ def main():
     pygame.init()
     pygame.display.set_caption("Test Game")
 
-    display_width: int = 800
-    display_height: int = 600
+    display = pygame.math.Vector2((800,600))
 
     background = Image(0, 0, "assets/images/ground.jpg")
-    player_one = Player(display_width / 2, display_height / 2)
+    player_one = Player(display.x / 2, display.y / 2)
 
     game_loop(
-        pygame.display.set_mode((display_width, display_height)), 
+        pygame.display.set_mode((display.x, display.y)), 
         background,
         player_one
     )

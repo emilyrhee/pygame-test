@@ -9,13 +9,13 @@ class Player:
         self.size = pygame.math.Vector2((50, 100))
         self.speed = 2
 
-    def draw(self, screen):
+    def draw(self, screen: pygame.Surface, display: pygame.math.Vector2):
         pygame.draw.rect(
             screen,
             "blue",
             pygame.Rect(
-                self.pos.x - self.size.x / 2,
-                self.pos.y - self.size.y / 2,
+                display.x / 2 - self.size.x / 2,
+                display.y / 2 - self.size.y / 2,
                 self.size.x,
                 self.size.y
             )
@@ -37,12 +37,13 @@ class Image:
     def __init__(self, x: float, y: float, img_path: str):
         self.pos = pygame.math.Vector2((x, y))
         self.img_path = img_path
+        self.rect = pygame.Rect((self.x, self.y), )
 
-    def draw(self, screen: pygame.Surface):
+    def draw(self, screen: pygame.Surface, camera: pygame.math.Vector2):
         screen.fill((0, 0, 0))  # move out of Image class
         screen.blit(
             pygame.image.load(self.img_path).convert(),
-            (self.pos.x, self.pos.y)
+            (self.pos.x - camera.x, self.pos.y - camera.y)
         )
     
     def get_position(self, camera: pygame.math.Vector2):
@@ -74,7 +75,8 @@ def game_loop(
     background: Image,
     player_one: Player,
     camera: pygame.math.Vector2,
-    display: pygame.math.Vector2
+    display: pygame.math.Vector2,
+    display_rect: pygame.math.Vector2
 ):
     while True:
         exit_on_close()
@@ -84,8 +86,8 @@ def game_loop(
         camera.x = player_one.pos.x - display.x / 2
         camera.y = player_one.pos.y - display.y / 2
 
-        background.draw(screen)
-        player_one.draw(screen)
+        background.draw(screen, camera)
+        player_one.draw(screen, display)
 
         pygame.display.update()
 
@@ -96,13 +98,18 @@ def main():
     pygame.display.set_caption("Test Game")
 
     display = pygame.math.Vector2((800,600))
+    display_rect = pygame.Rect(
+        (0, 0),
+        (display.x, display.y)
+    )
 
     game_loop(
         pygame.display.set_mode((display.x, display.y)),
         Image(0, 0, "assets/images/ground.jpg"),
         Player(display.x / 2, display.y / 2),
         pygame.math.Vector2((0, 0)),
-        display
+        display,
+        display_rect
     )
 
 if __name__=="__main__":

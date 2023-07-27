@@ -36,13 +36,12 @@ class Player:
 class Image:
     def __init__(self, x: float, y: float, img_path: str):
         self.pos = pygame.math.Vector2((x, y))
-        self.img_path = img_path
-        self.rect = pygame.Rect((self.x, self.y), )
+        self.image = pygame.image.load(img_path).convert()
 
     def draw(self, screen: pygame.Surface, camera: pygame.math.Vector2):
         screen.fill((0, 0, 0))  # move out of Image class
         screen.blit(
-            pygame.image.load(self.img_path).convert(),
+            self.image,
             (self.pos.x - camera.x, self.pos.y - camera.y)
         )
     

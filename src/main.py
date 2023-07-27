@@ -42,6 +42,12 @@ class Image:
             pygame.image.load(self.img_path).convert(),
             (self.pos.x, self.pos.y)
         )
+    
+    def get_position(self, camera: pygame.math.Vector2):
+        return pygame.math.Vector2((
+            self.pos.x - camera.x,
+            self.pos.y - camera.y
+        ))
 
 def exit_on_close():
     for event in pygame.event.get():
@@ -62,8 +68,8 @@ def key_input(pressed_key: pygame.key.ScancodeWrapper, player: Player):
         player.move_right()
 
 def game_loop(
-    screen: pygame.Surface, 
-    background: Image, 
+    screen: pygame.Surface,
+    background: Image,
     player_one: Player,
     camera: pygame.math.Vector2,
     display: pygame.math.Vector2
@@ -90,7 +96,7 @@ def main():
     display = pygame.math.Vector2((800,600))
 
     game_loop(
-        pygame.display.set_mode((display.x, display.y)), 
+        pygame.display.set_mode((display.x, display.y)),
         Image(0, 0, "assets/images/ground.jpg"),
         Player(display.x / 2, display.y / 2),
         pygame.math.Vector2((0, 0)),

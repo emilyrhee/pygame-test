@@ -39,7 +39,6 @@ class Image:
         self.image = pygame.image.load(img_path).convert_alpha()
 
     def draw(self, screen: pygame.Surface, camera: pygame.math.Vector2):
-        screen.fill((0, 0, 0))  # move out of Image class
         screen.blit(
             self.image,
             (self.pos.x - camera.x, self.pos.y - camera.y)
@@ -75,7 +74,8 @@ def game_loop(
     player_one: Player,
     camera: pygame.math.Vector2,
     display: pygame.math.Vector2,
-    display_rect: pygame.math.Vector2
+    display_rect: pygame.Rect,
+    goblin: Image
 ):
     while True:
         exit_on_close()
@@ -85,8 +85,10 @@ def game_loop(
         camera.x = player_one.pos.x - display.x / 2
         camera.y = player_one.pos.y - display.y / 2
 
+        screen.fill((0, 0, 0))
         background.draw(screen, camera)
         player_one.draw(screen, display)
+        goblin.draw(screen, camera)            
 
         pygame.display.update()
 
@@ -108,7 +110,8 @@ def main():
         Player(display.x / 2, display.y / 2),
         pygame.math.Vector2((0, 0)),
         display,
-        display_rect
+        display_rect,
+        Image(600, 400, "assets/images/goblin.png")
     )
 
 if __name__=="__main__":

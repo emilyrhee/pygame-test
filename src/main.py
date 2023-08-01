@@ -75,7 +75,8 @@ def game_loop(
     player_one: Player,
     camera: pygame.math.Vector2,
     display: pygame.math.Vector2,
-    display_rect: pygame.math.Vector2
+    display_rect: pygame.Rect,
+    goblin: Image
 ):
     while True:
         exit_on_close()

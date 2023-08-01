@@ -7,7 +7,7 @@ class Player:
     def __init__(self, x: float, y: float):
         self.pos = pygame.math.Vector2((x, y))
         self.size = pygame.math.Vector2((50, 100))
-        self.speed = 2
+        self.speed = 0.5
 
     def draw(self, screen: pygame.Surface, display: pygame.math.Vector2):
         pygame.draw.rect(

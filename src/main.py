@@ -77,19 +77,19 @@ class Game:
         self.camera = pygame.math.Vector2((0, 0))
         self.goblin = Image(600, 400, "assets/images/goblin.png")
 
-def game_loop(game: Game):
+def game_loop(g: Game):
     while True:
         exit_on_close()
 
-        key_input(pygame.key.get_pressed(), game.player_one)
+        key_input(pygame.key.get_pressed(), g.player_one)
 
-        game.camera.x = game.player_one.pos.x - game.display.x / 2
-        game.camera.y = game.player_one.pos.y - game.display.y / 2
+        g.camera.x = g.player_one.pos.x - g.display.x / 2
+        g.camera.y = g.player_one.pos.y - g.display.y / 2
 
-        game.screen.fill((0, 0, 0))
-        game.background.draw(game.screen, game.camera)
-        game.player_one.draw(game.screen, game.display)
-        game.goblin.draw(game.screen, game.camera)            
+        g.screen.fill((0, 0, 0))
+        g.background.draw(g.screen, g.camera)
+        g.player_one.draw(g.screen, g.display)
+        g.goblin.draw(g.screen, g.camera)            
 
         pygame.display.update()
 

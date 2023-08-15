@@ -42,11 +42,17 @@ class Image:
             self.image.get_size()
         )
 
-    def draw(self, screen: pygame.Surface, camera: pygame.math.Vector2):
-        screen.blit(
-            self.image,
-            (self.pos.x - camera.x, self.pos.y - camera.y)
-        )
+    def draw(
+        self, 
+        screen: pygame.Surface, 
+        display_rect: pygame.Rect, 
+        camera: pygame.math.Vector2
+    ):
+        if display_rect.colliderect(self.rect):
+            screen.blit(
+                self.image,
+                (self.pos.x - camera.x, self.pos.y - camera.y)
+            )
     
     def get_position(self, camera: pygame.math.Vector2):
         return pygame.math.Vector2((
@@ -95,10 +101,9 @@ def game_loop(g: Game):
         g.camera.y = g.player_one.pos.y - g.display.y / 2
 
         g.screen.fill((0, 0, 0))
-        g.background.draw(g.screen, g.camera)
+        g.background.draw(g.screen, g.display_rect, g.camera)
         g.player_one.draw(g.screen, g.display)
-        if g.display_rect.colliderect(g.goblin.rect):
-            g.goblin.draw(g.screen, g.camera)            
+        g.goblin.draw(g.screen, g.display_rect, g.camera)            
 
         pygame.display.update()
 

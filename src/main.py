@@ -81,15 +81,15 @@ def game_loop(game: Game):
     while True:
         exit_on_close()
 
-        key_input(pygame.key.get_pressed(), player_one)
+        key_input(pygame.key.get_pressed(), game.player_one)
 
-        camera.x = player_one.pos.x - display.x / 2
-        camera.y = player_one.pos.y - display.y / 2
+        game.camera.x = game.player_one.pos.x - game.display.x / 2
+        game.camera.y = game.player_one.pos.y - game.display.y / 2
 
-        screen.fill((0, 0, 0))
-        background.draw(screen, camera)
-        player_one.draw(screen, display)
-        goblin.draw(screen, camera)            
+        game.screen.fill((0, 0, 0))
+        game.background.draw(game.screen, game.camera)
+        game.player_one.draw(game.screen, game.display)
+        game.goblin.draw(game.screen, game.camera)            
 
         pygame.display.update()
 
@@ -105,15 +105,7 @@ def main():
         (display.x, display.y)
     )
 
-    game_loop(
-        pygame.display.set_mode((display.x, display.y)),
-        Image(0, 0, "assets/images/ground.jpg"),
-        Player(display.x / 2, display.y / 2),
-        pygame.math.Vector2((0, 0)),
-        display,
-        display_rect,
-        Image(600, 400, "assets/images/goblin.png")
-    )
+    game_loop(Game())
 
 if __name__=="__main__":
     main()

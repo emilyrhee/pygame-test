@@ -34,9 +34,13 @@ class Player:
         self.pos.x += self.speed
 
 class Image:
-    def __init__(self, x: float, y: float, img_path: str):
+    def __init__(self, x: float, y: float, img_path: str, camera: pygame.math.Vector2):
         self.pos = pygame.math.Vector2((x, y))
         self.image = pygame.image.load(img_path).convert_alpha()
+        self.rect = pygame.Rect(
+            (self.pos.x - camera.x, self.pos.y - camera.y),
+            self.image.get_size()
+        )
 
     def draw(self, screen: pygame.Surface, camera: pygame.math.Vector2):
         screen.blit(
@@ -71,11 +75,15 @@ def key_input(pressed_key: pygame.key.ScancodeWrapper, player: Player):
 class Game:
     def __init__(self):
         self.display = pygame.math.Vector2((800,600))
-        self.screen = pygame.display.set_mode((self.display.x, self.display.y))
-        self.background = Image(0, 0, "assets/images/ground.jpg")
-        self.player_one = Player(self.display.x / 2, self.display.y / 2)
+        self.display_rect = pygame.Rect(
+            (0, 0),
+            (self.display.x, self.display.y)
+        )
         self.camera = pygame.math.Vector2((0, 0))
-        self.goblin = Image(600, 400, "assets/images/goblin.png")
+        self.screen = pygame.display.set_mode((self.display.x, self.display.y))
+        self.background = Image(0, 0, "assets/images/ground.jpg", self.camera)
+        self.player_one = Player(self.display.x / 2, self.display.y / 2)
+        self.goblin = Image(600, 400, "assets/images/goblin.png", self.camera)
 
 def game_loop(g: Game):
     while True:
@@ -89,7 +97,8 @@ def game_loop(g: Game):
         g.screen.fill((0, 0, 0))
         g.background.draw(g.screen, g.camera)
         g.player_one.draw(g.screen, g.display)
-        g.goblin.draw(g.screen, g.camera)            
+        if g.display_rect.colliderect(g.goblin.rect):
+            g.goblin.draw(g.screen, g.camera)            
 
         pygame.display.update()
 

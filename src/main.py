@@ -68,15 +68,16 @@ def key_input(pressed_key: pygame.key.ScancodeWrapper, player: Player):
     if pressed_key[pygame.K_d]:
         player.move_right()
 
-def game_loop(
-    screen: pygame.Surface,
-    background: Image,
-    player_one: Player,
-    camera: pygame.math.Vector2,
-    display: pygame.math.Vector2,
-    display_rect: pygame.Rect,
-    goblin: Image
-):
+class Game:
+    def __init__(self):
+        self.display = pygame.math.Vector2((800,600))
+        self.screen = pygame.display.set_mode((self.display.x, self.display.y))
+        self.background = Image(0, 0, "assets/images/ground.jpg")
+        self.player_one = Player(self.display.x / 2, self.display.y / 2)
+        self.camera = pygame.math.Vector2((0, 0))
+        self.goblin = Image(600, 400, "assets/images/goblin.png")
+
+def game_loop(game: Game):
     while True:
         exit_on_close()
 
